@@ -22,6 +22,10 @@ public class Shop {
         this.website = website;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCity() {
         return city;
     }

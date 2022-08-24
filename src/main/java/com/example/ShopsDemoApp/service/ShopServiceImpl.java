@@ -48,6 +48,7 @@ private int count=1;
 
     @Override
     public Shop updateShop(Shop shop) {
+        listOfShops.get(shop.getId());
         return listOfShops.set(shop.getId(),shop);
     }
 }
