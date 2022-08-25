@@ -1,9 +1,13 @@
 package com.example.ShopsDemoApp.rest;
 
 import com.example.ShopsDemoApp.entity.Shop;
+import com.example.ShopsDemoApp.exception.ShopErrorResponse;
+import com.example.ShopsDemoApp.exception.ShopNotFoundException;
 import com.example.ShopsDemoApp.service.ShopServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -47,5 +51,14 @@ public class ShopRestController {
         return "Shop with id: " + shopId + " was deleted";
     }
 
+    @ExceptionHandler
+    public ResponseEntity<ShopErrorResponse> handleException(ShopNotFoundException exc) {
+        ShopErrorResponse error = new ShopErrorResponse();
+        error.setStatus(HttpStatus.NOT_FOUND.value());
+        error.setMessage(exc.getMessage());
+        error.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 
 }

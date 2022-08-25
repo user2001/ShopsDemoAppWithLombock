@@ -1,6 +1,7 @@
 package com.example.ShopsDemoApp.service;
 
 import com.example.ShopsDemoApp.entity.Shop;
+import com.example.ShopsDemoApp.exception.ShopNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -23,21 +24,25 @@ public class ShopServiceImpl implements ShopService {
 
         if (shopHashMap == null) shopHashMap = new HashMap<>();
         shopHashMap.put(newShopId, theShop);
+
         return theShop;
     }
 
     @Override
     public void deleteShop(String shopId) {
+        isFound(shopId);
         shopHashMap.remove(shopId);
     }
 
     @Override
     public Shop getShop(String shopId) {
+        isFound(shopId);
         return shopHashMap.get(shopId);
     }
 
     @Override
     public Shop updateShop(Shop shop, String shopId) {
+        isFound(shopId);
         var temp = shopHashMap.get(shopId);
         temp.setCity(shop.getCity());
         temp.setShopName(shop.getShopName());
@@ -45,5 +50,11 @@ public class ShopServiceImpl implements ShopService {
         temp.setCountOfWorkers(shop.getCountOfWorkers());
         temp.setWebsite(shop.isWebsite());
         return temp;
+    }
+
+    public void isFound(String shopId){
+        if(!shopHashMap.containsKey(shopId))
+            throw new ShopNotFoundException(
+                    "Shop with id: "+ shopId +" not found, try to put correct id");
     }
 }
