@@ -1,8 +1,7 @@
 package com.example.ShopsDemoApp.entity;
 
 public class Shop {
-
-    private int id;
+    private String id;
     private String city;
     private String street;
     private String shopName;
@@ -13,17 +12,12 @@ public class Shop {
     }
 
     public Shop
-            (int id,String city, String street, String shopName, int countOfWorkers, boolean website) {
-       this.id=id;
+            (String city, String street, String shopName, int countOfWorkers, boolean website) {
         this.city = city;
         this.street = street;
         this.shopName = shopName;
         this.countOfWorkers = countOfWorkers;
         this.website = website;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCity() {
@@ -66,14 +60,17 @@ public class Shop {
         this.website = website;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "Shop{" +
-                "id=" + id +
+        return "Shop{" + " id= " + id +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 ", shopName='" + shopName + '\'' +

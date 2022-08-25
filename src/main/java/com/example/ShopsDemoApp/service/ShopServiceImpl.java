@@ -3,52 +3,47 @@ package com.example.ShopsDemoApp.service;
 import com.example.ShopsDemoApp.entity.Shop;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.UUID;
 
 @Service
-public class ShopServiceImpl implements ShopService{
+public class ShopServiceImpl implements ShopService {
 
-    private List<Shop> listOfShops;
-private int count=1;
+    private HashMap<String, Shop> shopHashMap;
 
-    @PostConstruct
-    public void loadData(){
-        listOfShops=new ArrayList<>();
-        listOfShops.add(new Shop(count,
-                "Lviv","Lukasha","Rozetka",20,true));
-        listOfShops.add(new Shop(++count,
-                "Kyiv","Bandery","Opel",50,false));
-        listOfShops.add(new Shop(++count,
-                "Poltava","Shevchenka ","Reno",60,true));
+    @Override
+    public HashMap<String, Shop> getShops() {
+        return shopHashMap;
     }
 
     @Override
-    public List<Shop> getShops() {
-        return listOfShops;
-    }
+    public Shop addShop(Shop theShop) {
+        String newShopId = UUID.randomUUID().toString();
+        theShop.setId(newShopId);
 
-    @Override
-    public Shop addShop(Shop shop) {
-        listOfShops.add(shop);
-        return shop;
-    }
-
-    @Override
-    public void deleteShop(int shopId) {
-
-    }
-
-    @Override
-    public Shop getShop(int shopId) {
-        Shop theShop=listOfShops.get(shopId);
+        if (shopHashMap == null) shopHashMap = new HashMap<>();
+        shopHashMap.put(newShopId, theShop);
         return theShop;
     }
 
     @Override
-    public Shop updateShop(Shop shop) {
-        listOfShops.get(shop.getId());
-        return listOfShops.set(shop.getId(),shop);
+    public void deleteShop(String shopId) {
+        shopHashMap.remove(shopId);
+    }
+
+    @Override
+    public Shop getShop(String shopId) {
+        return shopHashMap.get(shopId);
+    }
+
+    @Override
+    public Shop updateShop(Shop shop, String shopId) {
+        var temp = shopHashMap.get(shopId);
+        temp.setCity(shop.getCity());
+        temp.setShopName(shop.getShopName());
+        temp.setStreet(shop.getStreet());
+        temp.setCountOfWorkers(shop.getCountOfWorkers());
+        temp.setWebsite(shop.isWebsite());
+        return temp;
     }
 }

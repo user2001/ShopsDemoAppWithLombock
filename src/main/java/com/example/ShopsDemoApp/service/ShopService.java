@@ -2,16 +2,16 @@ package com.example.ShopsDemoApp.service;
 
 import com.example.ShopsDemoApp.entity.Shop;
 
-import java.util.List;
+import java.util.HashMap;
 
 public interface ShopService {
-    public List<Shop> getShops();
+    public HashMap<String, Shop> getShops();
 
     public Shop addShop(Shop shop);
 
-    public void deleteShop(int shopId);
+    public void deleteShop(String shopId);
 
-    public Shop getShop(int shopId);
+    public Shop getShop(String shopId);
 
-    public Shop updateShop(Shop shop);
+    public Shop updateShop(Shop shop, String shopId);
 }
