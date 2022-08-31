@@ -1,9 +1,9 @@
-package com.example.ShopsDemoApp.rest;
+package com.example.ShopsDemoAppLombok.rest;
 
-import com.example.ShopsDemoApp.entity.Shop;
-import com.example.ShopsDemoApp.exception.ShopErrorResponse;
-import com.example.ShopsDemoApp.exception.ShopNotFoundException;
-import com.example.ShopsDemoApp.service.ShopServiceImpl;
+import com.example.ShopsDemoAppLombok.entity.Shop;
+import com.example.ShopsDemoAppLombok.exception.ShopErrorResponse;
+import com.example.ShopsDemoAppLombok.exception.ShopNotFoundException;
+import com.example.ShopsDemoAppLombok.service.ShopServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

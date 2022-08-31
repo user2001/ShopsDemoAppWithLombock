@@ -1,6 +1,6 @@
-package com.example.ShopsDemoApp.service;
+package com.example.ShopsDemoAppLombok.service;
 
-import com.example.ShopsDemoApp.entity.Shop;
+import com.example.ShopsDemoAppLombok.entity.Shop;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.example.ShopsDemoApp.exception;
+package com.example.ShopsDemoAppLombok.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

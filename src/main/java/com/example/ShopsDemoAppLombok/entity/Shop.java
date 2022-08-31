@@ -1,4 +1,4 @@
-package com.example.ShopsDemoApp.entity;
+package com.example.ShopsDemoAppLombok.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

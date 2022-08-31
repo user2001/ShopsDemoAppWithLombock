@@ -1,4 +1,4 @@
-package com.example.ShopsDemoApp.exception;
+package com.example.ShopsDemoAppLombok.exception;
 
 public class ShopNotFoundException extends  RuntimeException{
     public ShopNotFoundException(String message) {

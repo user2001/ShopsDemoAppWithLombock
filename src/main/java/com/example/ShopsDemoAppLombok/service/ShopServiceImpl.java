@@ -1,7 +1,7 @@
-package com.example.ShopsDemoApp.service;
+package com.example.ShopsDemoAppLombok.service;
 
-import com.example.ShopsDemoApp.entity.Shop;
-import com.example.ShopsDemoApp.exception.ShopNotFoundException;
+import com.example.ShopsDemoAppLombok.entity.Shop;
+import com.example.ShopsDemoAppLombok.exception.ShopNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
